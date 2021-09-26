@@ -3,10 +3,12 @@
 # prevent expansion of '*' in crontab frequency
 set -f
 
-command="borg create --list --filter AME --stats $server:$repository::$prefix-{now} /data"
+BORG_COMMAND="borg create --list --filter AME --stats ::$BORG_PREFIX-{now} /data"
 
-echo "$frequency $command > /proc/1/fd/1 2> /proc/1/fd/2" > entries.txt
+echo "$BORG_FREQUENCY $BORG_COMMAND > /proc/1/fd/1 2> /proc/1/fd/2" > entries.txt
 
 crontab entries.txt
+
+# TODO: remove entries, maybe also use tmp file
 
 exec $@
