@@ -9,5 +9,4 @@ echo $frequency $command > entries.txt
 
 crontab entries.txt
 
-# TODO: are quotations needed?
-exec "$@"
+exec $@
