@@ -26,6 +26,6 @@ services:
     - database:/data/database
     environment:
       server: borg.example.com
-      repository: /srv/example
+      repository: /srv/backup/example
       prefix: example
       frequency: 0 2 * * *
