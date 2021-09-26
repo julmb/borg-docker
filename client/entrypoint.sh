@@ -3,7 +3,7 @@
 # prevent expansion of '*' in crontab frequency
 set -f
 
-command="borg create --list --filter AME --stats $server:$repository::'{now}' /data"
+command="borg create --list --filter AME --stats $server:$repository::$prefix-{now} /data"
 
 echo $frequency $command > entries.txt
 
