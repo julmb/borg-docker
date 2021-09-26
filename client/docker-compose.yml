@@ -1,0 +1,28 @@
+version: "3"
+
+volumes:
+  settings:
+  database:
+
+services:
+  main:
+    image: alpine
+    restart: always
+    volumes:
+    - settings:/etc
+  database:
+    image: alpine
+    restart: always
+    volumes:
+    - database:/srv/sql
+  backup:
+    image: borg-client
+    restart: always
+    volumes:
+    - settings:/data/settings
+    - database:/data/database
+    environment:
+      server=borg.example.com
+      repository=/srv/example
+      prefix=example
+      frequency="0 2 * * *"
