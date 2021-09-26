@@ -1,5 +1,7 @@
 version: "3"
 
+# TODO: do we get diagnostic output on the server?
+
 services:
   backup:
     image: borg-server
@@ -8,3 +10,5 @@ services:
     # TODO: find a way to automate these so that they include forced commands
     - /root/.ssh/authorized_keys:/root/.ssh/authorized_keys
     - /space/borg:/srv/backup
+    ports:
+    - "3000:22"
