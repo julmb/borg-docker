@@ -1,0 +1,10 @@
+version: "3"
+
+services:
+  backup:
+    image: borg-server
+    restart: always
+    volumes:
+    # TODO: find a way to automate these so that they include forced commands
+    - /root/.ssh/authorized_keys:/root/.ssh/authorized_keys
+    - /space/borg:/srv/backup
