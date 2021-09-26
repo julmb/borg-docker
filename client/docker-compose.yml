@@ -8,13 +8,16 @@ services:
   main:
     image: alpine
     restart: always
+    command: tail -f /dev/null
     volumes:
     - settings:/etc
   database:
-    image: alpine
+    image: postgres
     restart: always
     volumes:
-    - database:/srv/sql
+    - database:/var/lib/postgresql/data
+    environment:
+      POSTGRES_PASSWORD: password
   backup:
     image: borg-client
     restart: always
