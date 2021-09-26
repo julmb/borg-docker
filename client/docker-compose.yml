@@ -25,7 +25,7 @@ services:
     - settings:/data/settings
     - database:/data/database
     environment:
-    - server=borg.example.com
-    - repository=/srv/example
-    - prefix=example
-    - frequency="0 2 * * *"
+      server: borg.example.com
+      repository: /srv/example
+      prefix: example
+      frequency: 0 2 * * *
