@@ -1,7 +1,5 @@
 version: "3"
 
-# TODO: do we get diagnostic output on the server?
-
 services:
   backup:
     image: borg-server
