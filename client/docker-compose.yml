@@ -29,6 +29,7 @@ services:
     environment:
       BORG_REPO: ssh://192.168.0.3:3000/srv/backup/example
       BORG_PASSPHRASE: "123"
+      BORG_COMPRESSION: lz4
       BORG_PREFIX: example
       BORG_SOURCE: /data
       BORG_FREQUENCY: "* * * * *"
