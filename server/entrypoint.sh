@@ -1,7 +1,7 @@
 #!/bin/sh
 
 echo "rebuilding ssh configuration..."
-rm -f ~/.ssh
+rm -rf ~/.ssh
 mkdir ~/.ssh
 while read repository key
 do
