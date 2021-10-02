@@ -5,8 +5,7 @@ services:
     image: borg-server
     restart: always
     volumes:
-    # TODO: find a way to automate these so that they include forced commands
-    - /root/.ssh/authorized_keys:/root/.ssh/authorized_keys
-    - /space/borg:/srv/backup
-    ports:
-    - "3000:22"
+    - ./ssh_host_ed25519_key:/etc/ssh/ssh_host_ed25519_key
+    - ./clients:/root/clients
+    - /mnt/backup:/srv/backup
+    ports: ["2222:22"]
