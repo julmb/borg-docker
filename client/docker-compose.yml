@@ -22,14 +22,13 @@ services:
     image: borg-client
     restart: always
     volumes:
-    - /root/borg-docker/client/id_rsa:/root/.ssh/id_rsa
-    - /root/borg-docker/client/known_hosts:/root/.ssh/known_hosts
+    - ./ssh_host_ed25519_key.pub:/root/ssh_host_ed25519_key.pub
+    - ./id_ed25519:/root/.ssh/id_ed25519
     - settings:/data/settings
     - database:/data/database
     environment:
-      BORG_REPO: ssh://192.168.0.3:3000/srv/backup/example
-      BORG_PASSPHRASE: "123"
-      BORG_COMPRESSION: lz4
-      BORG_PREFIX: example
-      BORG_SOURCE: /data
-      BORG_FREQUENCY: "* * * * *"
+      command: borg create --verbose --list --filter AME --stats
+      repository: ssh://192.168.0.4:2222/srv/backup/example
+      passphrase: "123"
+      source: /data
+      time: "* * * * *"
