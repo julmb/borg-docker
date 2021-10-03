@@ -18,5 +18,5 @@ ssh-keygen -t ed25519 -C server.example.com -N "" -f ssh_host_ed25519_key
 
 Generate client key pair.
 ```sh
-ssh-keygen -t ed25519 -C server.example.com -N "" -f id_ed25519
+ssh-keygen -t ed25519 -C client.example.com -N "" -f id_ed25519
 ```
