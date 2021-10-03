@@ -9,15 +9,12 @@ services:
     image: alpine
     restart: always
     command: tail -f /dev/null
-    volumes:
-    - settings:/etc
+    volumes: [settings:/etc]
   database:
     image: postgres
     restart: always
-    volumes:
-    - database:/var/lib/postgresql/data
-    environment:
-      POSTGRES_PASSWORD: password
+    volumes: [database:/var/lib/postgresql/data]
+    environment: { POSTGRES_PASSWORD: password }
   backup:
     image: borg-client
     restart: always
@@ -27,8 +24,7 @@ services:
     - settings:/data/settings
     - database:/data/database
     environment:
-      command: borg create --verbose --list --filter AME --stats
+      command: borg create --verbose --list --filter AME --stats ::{now} /data
       repository: ssh://192.168.0.4:2222/srv/backup/example
       passphrase: "123"
-      source: /data
       time: "* * * * *"
