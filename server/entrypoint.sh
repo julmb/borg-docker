@@ -1,8 +1,8 @@
 #!/bin/sh
 
-echo "rebuilding ssh configuration..."
-rm -rf ~/.ssh
-mkdir ~/.ssh
+echo "rebuilding authorized keys..."
+mkdir --parents ~/.ssh
+rm --force ~/.ssh/authorized_keys
 while read repository key
 do
     command="borg serve --append-only --restrict-to-path $repository"
