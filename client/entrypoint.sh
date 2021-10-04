@@ -1,7 +1,7 @@
 #!/bin/sh
 
 echo "rebuilding known hosts..."
-mkdir --parents ~/.ssh
+mkdir -p ~/.ssh
 read type key host < ~/ssh_host_ed25519_key.pub
 echo $host $type $key > ~/.ssh/known_hosts
 
